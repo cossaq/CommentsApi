@@ -8,7 +8,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/comments')
+    fetch('https://jsonplaceholder.typicode.com/users')
       .then((res) => res.json())
       .then((data) => {
         this.setState({ loading: false });
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div>
         {this.state.loading ? (
-          <h1>Loading...</h1>
+          <h1>API Loading...</h1>
         ) : (
           <Contacts comments={this.state.comments} />
         )}

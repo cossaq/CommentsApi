@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Contacts.css';
 
 const Contacts = ({ comments }) => {
   const [page, setPage] = useState(1);
@@ -16,34 +17,51 @@ const Contacts = ({ comments }) => {
   };
 
   return (
-    <div>
-      <h1>Comment List</h1>
+    <div className='col-sm-10'>
+      <h1>User List</h1>
       <p>
         Fetched from
-        <i> https://jsonplaceholder.typicode.com/comments</i>
+        <i> https://jsonplaceholder.typicode.com/users</i>
       </p>
       {comments.slice(page * 4 - 4, page * 4).map((comment) => (
-        <div className='card' style={{ width: '700px', marginBottom: '20px' }}>
-          <div className='card-body'>
-            <h5 className='card-title'>Name: {comment.name}</h5>
-            <h6 className='card-subtitle mb-2 text-muted'>
-              Email: {comment.email}
-            </h6>
-            <p className='card-text'>Body: {comment.body}</p>
+        <div
+          className='card'
+          style={{ height: '100px', width: '500px', marginBottom: '20px' }}
+        >
+          <div className='card-body row'>
+            <div className='col-3'>
+              <h6 className='card-text'>Name</h6>
+              <h6 className='card-text'>Username</h6>
+              <h6 className='card-text'>Email</h6>
+            </div>
+
+            <div className='col-5'>
+              <h6 className='card-text'>{comment.name}</h6>
+              <h6 className='card-text'>{comment.username}</h6>
+              <h6 className='card-text'>{comment.email}</h6>
+            </div>
           </div>
         </div>
       ))}
       <ul className='pagination'>
         <li className='page-item'>
-          <button className='page-link' onClick={decPage}>
+          <button
+            className={page === 1 ? 'page-link disabled' : 'page-link'}
+            onClick={decPage}
+          >
             &lt; Previous
           </button>
         </li>
         <li className='page-item'>
-          <p className='page-link'>{page}</p>
+          <p className='page-link page-number'>{page}</p>
         </li>
         <li className='page-item'>
-          <button className='page-link' onClick={incPage}>
+          <button
+            className={
+              page * 4 > comments.length ? 'page-link disabled' : 'page-link'
+            }
+            onClick={incPage}
+          >
             Next &gt;
           </button>
         </li>

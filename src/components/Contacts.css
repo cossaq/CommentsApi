@@ -1,0 +1,16 @@
+.disabled,
+.disabled:focus,
+.disabled:hover {
+  color: gray;
+  background-color: white;
+  cursor: default;
+  outline: none;
+  outline: none !important;
+  box-shadow: none;
+}
+
+.page-number,
+.page-number:hover {
+  color: gray;
+  background-color: white;
+}
